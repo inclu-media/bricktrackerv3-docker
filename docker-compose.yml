@@ -1,0 +1,50 @@
+# Volume only container
+vol:
+  build: ./vol
+  #image: debian:jessie
+  #volumes:
+  #  - /home/strong-pm
+  #  - /db/data
+  #  - /opt/splunk/etc
+  #  - /opt/splunk/var
+  #  - /var/lib/rabbitmq/mnesia/rabbit@mq
+
+# strong-pm process manager
+pm:
+  image: strongloop/strong-pm
+  volumes_from:
+    - vol
+  ports:
+    - "8701:8701"
+    - "3000:3000"
+    - "3001:3001"
+    - "3002:3002"
+    - "3003:3003"
+  environment:
+    - NODE_ENV=production
+  links:
+    - db
+    - mq
+    - log
+
+# mongodb
+db:
+  image: mongo:latest
+  volumes_from:
+    - vol
+
+# rabbitmq message queue
+mq:
+  image: rabbitmq:latest
+  volumes_from:
+    - vol
+
+# splunk logger
+log:
+  image: outcoldman/splunk:latest-light
+  volumes_from:
+    - vol
+  ports:
+    - "8000:8000"
+    - "54321:54321/udp"
+    - "54321:54321"
