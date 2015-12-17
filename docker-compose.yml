@@ -1,15 +1,9 @@
 # Volume only container
 vol:
   build: ./vol
-  #image: debian:jessie
-  #volumes:
-  #  - /home/strong-pm
-  #  - /db/data
-  #  - /opt/splunk/etc
-  #  - /opt/splunk/var
-  #  - /var/lib/rabbitmq/mnesia/rabbit@mq
 
 # strong-pm process manager
+# deployment port: 8701
 pm:
   image: strongloop/strong-pm
   volumes_from:
@@ -40,11 +34,10 @@ mq:
     - vol
 
 # splunk logger
+# management port: 8000
 log:
   image: outcoldman/splunk:latest-light
   volumes_from:
     - vol
   ports:
     - "8000:8000"
-    - "54321:54321/udp"
-    - "54321:54321"

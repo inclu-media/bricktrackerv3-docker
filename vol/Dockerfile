@@ -8,4 +8,3 @@ VOLUME /home/strong-pm
 VOLUME /db/data
 VOLUME /opt/splunk/etc
 VOLUME /opt/splunk/var
-VOLUME /var/lib/rabbitmq/mnesia/rabbit@mq

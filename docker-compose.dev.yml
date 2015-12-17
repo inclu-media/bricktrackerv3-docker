@@ -1,0 +1,22 @@
+# mongodb
+# expose ports for local testing
+db:
+  ports:
+    - "27017:27017"
+
+# rabbitmq message queue
+# expose ports for local testing
+mq:
+  ports:
+   - "4369:4369"
+   - "5671:5671"
+   - "5672:5672"
+   - "25672:25672"
+
+# splunk logger
+# management port: 8000
+# expose logging ports
+log:
+  ports:
+    - "54321:54321/udp"
+    - "54321:54321"
