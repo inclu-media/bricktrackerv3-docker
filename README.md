@@ -14,6 +14,14 @@ DEV Environment
 PROD Environment
 ----------------
 
+Connecting
+
+```
+ssh -i "btv3-keypair.pem" ec2-user@52.21.77.232
+```
+
+Running
+
 ```
 > docker-compose build
 > docker-compose up -d
