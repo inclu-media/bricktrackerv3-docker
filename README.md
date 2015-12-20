@@ -1,6 +1,5 @@
 Bricktracker V3 Docker Commands
 ===============================
-Martin Melcher <martin@inclumedia.at>
 
 DEV Environment
 ---------------
