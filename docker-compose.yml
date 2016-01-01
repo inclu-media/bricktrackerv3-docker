@@ -1,6 +1,7 @@
 # Volume only container
 vol:
   build: ./vol
+  restart: always
 
 # strong-pm process manager
 # deployment port: 8701
@@ -20,18 +21,21 @@ pm:
     - db
     - mq
     - log
+  restart: always
 
 # mongodb
 db:
   image: mongo:latest
   volumes_from:
     - vol
+  restart: always
 
 # rabbitmq message queue
 mq:
   image: rabbitmq:latest
   volumes_from:
     - vol
+  restart: always
 
 # splunk logger
 # management port: 8000
@@ -41,3 +45,4 @@ log:
     - vol
   ports:
     - "8000:8000"
+  restart: always
